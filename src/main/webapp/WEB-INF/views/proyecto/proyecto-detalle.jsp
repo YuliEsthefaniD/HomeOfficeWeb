@@ -57,7 +57,7 @@
 						<span class="js-nav-desc ml-2 medium main">Colaboradores</span>
 					</a>
 
-					<a href="../tarea/tareas" class="sidenav-item no-link d-block position-relative px-3 py-4">
+					<a href="../tarea/tareas-usuario" class="sidenav-item no-link d-block position-relative px-3 py-4">
 						<img class="icon-sidenav-item hide" src="/resources/assets/icons/sidenav/tareas_active.svg">
 						<img class="icon-sidenav-item" src="/resources/assets/icons/sidenav/tareas.svg">
 						<span class="js-nav-desc ml-2 medium main">Tareas</span><span class="text-white bg-red small rounded-pill px-2 float-right medium">262</span>
@@ -255,7 +255,7 @@
 													<input type="checkbox" class="custom-control-input" id="checkTask1">
 													<label class="custom-control-label medium main small pt-1" for="checkTask1"><c:out value="${card.title}"/></label>
 												</div>
-												<span class="js-show-details hide hover-content-child smoth float-right pt-2 medium main smallest" onclick="getNombre(<c:out value="${card.title}"/>)">Detalles <img src="/resources/assets/icons/generales/chev_right.svg"></span>
+												<span class="js-show-details hide hover-content-child smoth float-right pt-2 medium main smallest" @click="getNombre('<c:out value="${card.title}"/>')">Detalles <img src="/resources/assets/icons/generales/chev_right.svg"></span>
 											</div>
 											<div class="col-3 p-0 px-3 py-1 bl-gray">
 												<span class="medium main small">14 Abril</span>

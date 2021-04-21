@@ -58,10 +58,9 @@ var proyecto = new Vue({
 				    });
 		},
 		getNombre(nom){
-			proyecto.nombreCard = nom;
-			console.log(nom);
-		},
-	    
+		 console.log(nom);
+		 proyecto.nombreCard = nom;
+		}
 	}
 });
 

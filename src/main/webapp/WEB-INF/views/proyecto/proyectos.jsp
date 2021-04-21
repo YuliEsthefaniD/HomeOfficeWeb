@@ -55,7 +55,7 @@
 						<span class="js-nav-desc ml-2 medium main">Colaboradores</span>
 					</a>
 
-					<a href="tareas.html" class="sidenav-item no-link d-block position-relative px-3 py-4">
+					<a href="../tarea/tareas-usuario" class="sidenav-item no-link d-block position-relative px-3 py-4">
 						<img class="icon-sidenav-item hide" src="/resources/assets/icons/sidenav/tareas_active.svg">
 						<img class="icon-sidenav-item" src="/resources/assets/icons/sidenav/tareas.svg">
 						<span class="js-nav-desc ml-2 medium main">Tareas</span><span class="text-white bg-red small rounded-pill px-2 float-right medium">262</span>

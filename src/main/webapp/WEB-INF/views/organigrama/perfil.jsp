@@ -56,8 +56,8 @@
 						<span class="js-nav-desc ml-2 medium main">Colaboradores</span>
 					</a>
 
-					<a href="../colaborador/tareas-colaborador" class="sidenav-item no-link d-block position-relative px-3 py-4">
-						<img class="icon-sidenav-item hide" src="/resources/assets/icons/sidenav/tareas.svg">
+					<a href="../tarea/tareas-usuario" class="sidenav-item no-link d-block position-relative px-3 py-4">
+						<img class="icon-sidenav-item hide" src="/resources/assets/icons/sidenav/tareas_active.svg">
 						<img class="icon-sidenav-item" src="/resources/assets/icons/sidenav/tareas.svg">
 						<span class="js-nav-desc ml-2 medium main">Tareas</span><span class="text-white bg-red small rounded-pill px-2 float-right medium">262</span>
 					</a>
@@ -166,7 +166,7 @@
 <!-- Component: Perfil -->
 					<div class="row pt-5">
 						<div class="col-8 mx-auto b-gray rounded-lg overflow-auto px-5 py-4">
-							<h1 class="h5 semibold mb-4">Informaci&oacute;n b&iacute;¡sica</h1>
+							<h1 class="h5 semibold mb-4">Informaci&oacute;n b&aacute;sica</h1>
 							<div class="row mb-4">
 								<div class="col-4 medium gray">Tu nombre</div>
 								<div class="col semibold main">Rodrigo Ort&iacute;­z</div>

@@ -40,26 +40,27 @@
 					<a href="../general/vista-general" class="sidenav-item no-link d-block position-relative px-3 py-4">
 						<img class="icon-sidenav-item hide" src="/resources/assets/icons/sidenav/vista_general_active.svg">
 						<img class="icon-sidenav-item" src="/resources/assets/icons/sidenav/vista_general.svg">
-						<span class="js-nav-desc ml-2 medium main">Vista general</span>
+						<span class="js-nav-desc ml-2 medium main">Vista General</span>
 					</a>
 
-					<a href="../proyecto/proyectos" class="sidenav-item no-link d-block position-relative px-3 py-4 component-active">
+					<a href="../proyecto/proyectos" class="sidenav-item no-link d-block position-relative px-3 py-4">
 						<img class="icon-sidenav-item hide" src="/resources/assets/icons/sidenav/proyectos_active.svg">
 						<img class="icon-sidenav-item" src="/resources/assets/icons/sidenav/proyectos.svg">
 						<span class="js-nav-desc ml-2 medium main">Proyectos</span><span class="text-white bg-red small rounded-pill px-2 float-right medium">132</span>
 					</a>
 
-					<a href="/colaborador/colaboradores" class="sidenav-item no-link d-block position-relative px-3 py-4">
+					<a href="../colaborador/colaboradores" class="sidenav-item no-link d-block position-relative px-3 py-4 component-active">
 						<img class="icon-sidenav-item hide" src="/resources/assets/icons/sidenav/colaboradores_active.svg">
 						<img class="icon-sidenav-item" src="/resources/assets/icons/sidenav/colaboradores.svg">
 						<span class="js-nav-desc ml-2 medium main">Colaboradores</span>
 					</a>
 
-					<a href="tareas/tareas" class="sidenav-item no-link d-block position-relative px-3 py-4">
+					<a href="../tarea/tareas-usuario" class="sidenav-item no-link d-block position-relative px-3 py-4">
 						<img class="icon-sidenav-item hide" src="/resources/assets/icons/sidenav/tareas_active.svg">
 						<img class="icon-sidenav-item" src="/resources/assets/icons/sidenav/tareas.svg">
 						<span class="js-nav-desc ml-2 medium main">Tareas</span><span class="text-white bg-red small rounded-pill px-2 float-right medium">262</span>
 					</a>
+
 
 					<div class="notice collapse show p-4">
 						<img class="zi-n1 w-100" src="/resources/assets/img/test/test_notice.svg">
@@ -173,9 +174,9 @@
 							<div class="position-relative d-inline-block ml-2">
 								<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user.png">
 								<div class="hide js-fade-content position-absolute bg-white p-3 pl-5 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right">
-									<a href="perfil.html" class="d-block small semibold no-link mb-2 main">Mi Perfil</a>
-									<a href="organigrama.html" class="d-block small semibold no-link mb-2 main">Organigrama</a>
-									<a class="d-block small semibold no-link red">Cerrar sesión</a>
+									<a href="../perfil/perfil" class="d-block small semibold no-link mb-2 main">Mi Perfil</a>
+									<a href="../perfil/organigrama" class="d-block small semibold no-link mb-2 main">Organigrama</a>
+									<a class="d-block small semibold no-link red">Cerrar sesi&oacute;n</a>
 								</div>								
 							</div>
 
@@ -501,10 +502,11 @@
 							e" id="nav-calendario" role="tabpanel" aria-labelledby="nav-calendario-tab">
 								<div class="row">
 								<div class="col-8">
-								 <img class="pt-1 w-300px" style="" src="/resources/assets/icons/generales/calendarioE.png">
+								   <div class="card bg-transparent alig-items-center mt-2">
+								     <img class="pt-1 w-500px" style="" src="/resources/assets/icons/generales/calendarioE.png">
+								   </div>
 								</div>
 								<div class="col-4">
-									  <div>
                                         <div class="card">
 										  <div class="card-header bg-light">
 											Mis Calendarios
@@ -519,8 +521,7 @@
 											<img class="pt-1 w-30px" src="/resources/assets/icons/generales/smorado.png">
 											<span class="small">Festivos en M&eacute;xico</span>
 										  </div>
-										</div>
-									  </div>
+									     </div>
 									  <div class="">
 										  <div class="card bg-transparent alig-items-center mt-2">
 												  <img class="pt-1 w-80" src="/resources/assets/icons/generales/calendarioP.png">

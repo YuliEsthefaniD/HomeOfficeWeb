@@ -18,7 +18,6 @@ $(document).ready(function () {
 	});
 
 	$('.js-show-details').click(function() {
-		console.log("detalles");
 		$('.js-content-details').fadeToggle(150);
 	});
 
