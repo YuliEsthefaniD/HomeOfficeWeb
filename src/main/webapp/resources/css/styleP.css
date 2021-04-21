@@ -1,0 +1,22 @@
+/* Buttons Colaboradores */
+.btnCdr{
+   margin-left: -20px;
+  border-radius: 15px;
+  border-style: solid;
+}
+.btnCdr1{
+  border-radius: 15px;
+  border-style: solid;
+}
+.btnColorCdr1{
+  background-color: #69e092;
+}
+.btnColorCdr2{
+  background-color: #ff4a4a;
+}
+.w-95{
+    width: 91%!important;
+}
+.w-12{
+    width: 12%!important;
+}
