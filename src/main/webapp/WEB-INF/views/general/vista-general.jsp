@@ -155,7 +155,7 @@
 							</div>
 
 							<div class="position-relative d-inline-block ml-2">
-								<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user.png">
+								<img class="hover-b-blue smoth rounded-circle border dropdown-toggle w-50" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://lh5.googleusercontent.com/-qNt7L-IpDU8/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckan6VRxICT8BDqOTrMmIdhofhDpw/s96-c/photo.jpg">
 								<div class="hide js-fade-content position-absolute bg-white p-3 pl-5 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right">
 									<a href="../perfil/perfil" class="d-block small semibold no-link mb-2 main">Mi Perfil</a>
 									<a href="../perfil/organigrama" class="d-block small semibold no-link mb-2 main">Organigrama</a>
@@ -219,59 +219,101 @@
 								 <div class="position-relative d-inline-block ml-2" id='dmenu'>
 								<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_1.png">
 								<div class="hide position-absolute bg-white py-2 pl-3 pr-2 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right text-left">
-									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/tareas/evento.svg">  Calendar </a>
-									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/meet.svg">  Llamar </a>
-									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/tareas/personas.svg">  Enviar mensaje </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/pmo.svg">  PMO </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/nombre.svg"> NOMBRE </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/llamar.svg"> LLAMAR </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/mensaje.svg"> MENSAJE </a>
 								</div>
 										</div>
 										<p class="main smallest m-0 pt-2 semibold text-center">Dolores G</p>
 									</div>
 									<div class="col pr-0 small">
-										<div class="position-relative">
-											<img class="w-100 rounded-circle border border-light shadow" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_2.png">
-											<span class="pointer-green position-absolute rounded-circle border border-light"></span>
+										<div class="position-relative d-inline-block ml-2" id='dmenu'>
+											<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_2.png">
+											<div class="hide position-absolute bg-white py-2 pl-3 pr-2 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right text-left">
+											<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/pmo.svg">  PMO </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/nombre.svg"> NOMBRE </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/llamar.svg"> LLAMAR </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/mensaje.svg"> MENSAJE </a>
+									</div>
 										</div>
 										<p class="main smallest m-0 pt-2 semibold text-center">Deysi P</p>
 									</div>
 									<div class="col pr-0 small">
 										<div class="position-relative">
-											<img class="w-100 rounded-circle border border-light shadow" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_3.png">
+											<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_3.png">
 											<span class="pointer-green position-absolute rounded-circle border border-light"></span>
+											<div class="hide position-absolute bg-white py-2 pl-3 pr-2 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right text-left">
+											<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/pmo.svg">  PMO </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/nombre.svg"> NOMBRE </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/llamar.svg"> LLAMAR </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/mensaje.svg"> MENSAJE </a>
+										</div>
 										</div>
 										<p class="main smallest m-0 pt-2 semibold text-center">Wendy A</p>
 									</div>
 									<div class="col pr-0 small">
 										<div class="position-relative">
-											<img class="w-100 rounded-circle border border-light shadow" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_4.png">
+											<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_4.png">
 											<span class="pointer-green position-absolute rounded-circle border border-light"></span>
+											<div class="hide position-absolute bg-white py-2 pl-3 pr-2 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right text-left">
+											<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/pmo.svg">  PMO </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/nombre.svg"> NOMBRE </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/llamar.svg"> LLAMAR </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/mensaje.svg"> MENSAJE </a>
+										</div>
 										</div>
 										<p class="main smallest m-0 pt-2 semibold text-center">Yuvia F</p>
 									</div>
 									<div class="col pr-0 small">
 										<div class="position-relative">
-											<img class="w-100 rounded-circle border border-light shadow" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_5.png">
+											<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_5.png">
 											<span class="pointer-green position-absolute rounded-circle border border-light"></span>
+											<div class="hide position-absolute bg-white py-2 pl-3 pr-2 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right text-left">
+											<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/pmo.svg">  PMO </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/nombre.svg"> NOMBRE </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/llamar.svg"> LLAMAR </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/mensaje.svg"> MENSAJE </a>
+										</div>
 										</div>
 										<p class="main smallest m-0 pt-2 semibold text-center">Violeta S</p>
 									</div>
 									<div class="col pr-0 small">
 										<div class="position-relative">
-											<img class="w-100 rounded-circle border border-light shadow" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_6.png">
+											<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_6.png">
 											<span class="pointer-green position-absolute rounded-circle border border-light"></span>
+											<div class="hide position-absolute bg-white py-2 pl-3 pr-2 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right text-left">
+											<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/pmo.svg">  PMO </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/nombre.svg"> NOMBRE </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/llamar.svg"> LLAMAR </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/mensaje.svg"> MENSAJE </a>
+										</div>
 										</div>
 										<p class="main smallest m-0 pt-2 semibold text-center">Herzon C</p>
 									</div>
 									<div class="col pr-0 small">
 										<div class="position-relative">
-											<img class="w-100 rounded-circle border border-light shadow" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_7.png">
+											<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_7.png">
 											<span class="pointer-green position-absolute rounded-circle border border-light"></span>
+											<div class="hide position-absolute bg-white py-2 pl-3 pr-2 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right text-left">
+											<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/pmo.svg">  PMO </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/nombre.svg"> NOMBRE </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/llamar.svg"> LLAMAR </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/mensaje.svg"> MENSAJE </a>
+										</div>
 										</div>
 										<p class="main smallest m-0 pt-2 semibold text-center">Rodrigo O</p>
 									</div>
 									<div class="col pr-0 small">
 										<div class="position-relative">
-											<img class="w-100 rounded-circle border border-light shadow" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_8.png">
+											<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user_8.png">
 											<span class="pointer-green position-absolute rounded-circle border border-light"></span>
+											<div class="hide position-absolute bg-white py-2 pl-3 pr-2 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right text-left">
+											<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/pmo.svg">  PMO </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/nombre.svg"> NOMBRE </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/llamar.svg"> LLAMAR </a>
+									<a href="" class="d-block no-link semibold main smallest my-2"> <img class="ml-2" src="/resources/assets/icons/generales/mensaje.svg"> MENSAJE </a>
+										</div>
 										</div>
 										<p class="main smallest m-0 pt-2 semibold text-center">Hector C</p>
 									</div>

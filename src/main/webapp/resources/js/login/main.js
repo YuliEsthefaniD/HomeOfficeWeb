@@ -3,6 +3,8 @@ const loggedInLinks = document.querySelectorAll(".logged-in");
 
 const loginCheck = (user) => {
   if (user) {
+	srcAvatar = user.photoURL;
+	console.log(srcAvatar);
     loggedInLinks.forEach((link) => (link.style.display = "block"));
     loggedOutLinks.forEach((link) => (link.style.display = "none"));
       

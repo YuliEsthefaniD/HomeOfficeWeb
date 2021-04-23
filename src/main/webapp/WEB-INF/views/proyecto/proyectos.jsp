@@ -156,7 +156,7 @@
 							</div>
 
 							<div class="position-relative d-inline-block ml-2">
-								<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user.png">
+								<img class="hover-b-blue smoth rounded-circle border dropdown-toggle w-80" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  src="srcAvatar">
 								<div class="hide js-fade-content position-absolute bg-white p-3 pl-5 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right">
 									<a href="../perfil/perfil" class="d-block small semibold no-link mb-2 main">Mi Perfil</a>
 									<a href="../perfil/organigrama" class="d-block small semibold no-link mb-2 main">Organigrama</a>
@@ -396,6 +396,7 @@
 		const auth = firebase.auth();
 		</script>
 		<script src="/resources/js/common/functionCommon.js"></script>
+		<script src="/resources/js/login/main.js"></script>
 
 	</body>
 </html>

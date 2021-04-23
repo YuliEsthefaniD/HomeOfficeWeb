@@ -158,11 +158,11 @@
 							</div>
 
 							<div class="position-relative d-inline-block ml-2" id='dmenu'>
-								<img class="hover-b-blue smoth rounded-circle border dropdown-toggle" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/resources/assets/img/test/test_user.png">
+								<img class="hover-b-blue smoth rounded-circle border dropdown-toggle w-80" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  src="srcAvatar">
 								<div class="hide js-fade-content position-absolute bg-white p-3 pl-5 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right">
-									<a href="" class="d-block no-link semibold main smallest my-2">Calendar <img class="ml-2" src="/resources/assets/icons/tareas/evento.svg"></a>
-									<a href="" class="d-block no-link semibold main smallest my-2">Planview <img class="ml-2" src="/resources/assets/icons/tareas/planview.svg"></a>
-									<a href="" class="d-block no-link semibold main smallest my-2">Carpeta Drive <img class="ml-2" src="/resources/assets/icons/tareas/drive.svg"></a>
+									<a href="../perfil/perfil" class="d-block small semibold no-link mb-2 main">Mi Perfil</a>
+									<a href="../perfil/organigrama" class="d-block small semibold no-link mb-2 main">Organigrama</a>
+									<a class="d-block small semibold no-link red">Cerrar sesi&oacute;n</a>
 								</div>								
 							</div>
 
@@ -185,12 +185,8 @@
 								<div class="d-inline-block p-0 pl-2 m-0 ml-3 align-middle semibold bl-blue position-relative" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><svg width="8" height="6" viewBox="0 0 11.175 6.585"><path d="M15.88,9.29,12,13.17,8.12,9.29A1,1,0,0,0,6.71,10.7l4.59,4.59a1,1,0,0,0,1.41,0L17.3,10.7a1,1,0,0,0,0-1.41,1.017,1.017,0,0,0-1.42,0Z" transform="translate(-6.418 -8.997)" fill="#006cff"/></svg></div>
 
 								<div class="hide position-absolute bg-white py-2 pl-3 pr-2 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right text-right">
-									<a href="" class="d-block no-link semibold main smallest my-2">Agregar secci&oacute;n <img class="ml-2" src="/resources/assets/icons/tareas/seccion.svg"></a>
-									<a href="" class="d-block no-link semibold main smallest my-2">Participantes <img class="ml-2" src="/resources/assets/icons/tareas/participantes.svg"></a>
-									<a href="https://www.googleapis.com/auth/calendar.readonly" class="d-block no-link semibold main smallest my-2">Evento <img class="ml-2" src="/resources/assets/icons/tareas/evento.svg"></a>
-									<a href="" class="d-block no-link semibold main smallest my-2">Vencimiento <img class="ml-2" src="/resources/assets/icons/tareas/vencimiento.svg"></a>
-									<a href="" class="d-block no-link semibold main smallest my-2">Planview <img class="ml-2" src="/resources/assets/icons/tareas/planview.svg"></a>
-									<a href="https://www.googleapis.com/drive/v3/files" class="d-block no-link semibold main smallest my-2">Carpeta Drive <img class="ml-2" src="/resources/assets/icons/tareas/drive.svg"></a>
+									<a href="https://calendar.google.com/calendar/u/0/r" class="d-block no-link semibold main smallest my-2">Calendar <img class="ml-2" src="/resources/assets/icons/tareas/evento.svg"></a>
+									<a href="https://drive.google.com/drive/u/0/my-drive" class="d-block no-link semibold main smallest my-2">Gooogle Drive <img class="ml-2" src="/resources/assets/icons/tareas/drive.svg"></a>
 								</div>
 							</div>
 						</div>
