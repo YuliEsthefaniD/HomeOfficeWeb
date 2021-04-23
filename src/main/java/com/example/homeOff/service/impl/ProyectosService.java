@@ -24,8 +24,9 @@ public class ProyectosService {
 	
 	public Object Producto(String card) {
 		try {
-			String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.BOARD + "/"+ card + ConstantesCommon.CARD;
-			
+			// io/card?board=943188457
+			String uri = ConstantesCommon.BASE_PATH + "/" +  ConstantesCommon.CARD + "?" + ConstantesCommon.BOARD + "=" +  card;
+			System.out.println(uri);
 			RestTemplate restTemplate = new RestTemplate();
 			HttpHeaders headers = new HttpHeaders();
 			headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -36,10 +37,10 @@ public class ProyectosService {
 			if(response.getStatusCode().equals(HttpStatus.OK)) {
 				ProyectoDetalleModel model  = new ProyectoDetalleModel();
 				List<CardDto> cards = new ArrayList<>();
-				model.setTitulo(response.getBody().getCards().get(0).getParentCards()[0].getTitle());
+				model.setTitulo(response.getBody().getCards().get(0).getTitle());
 				response.getBody().getCards().forEach(e ->{
 					CardDto car = new CardDto();
-					String uritask = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD + "/" + e.getId() + ConstantesCommon.TASK;
+					String uritask = ConstantesCommon.BASE_PATH + "/" + ConstantesCommon.CARD + "/" + e.getId() + "/" + ConstantesCommon.TASK;
 					car = e;
 					ResponseEntity<ResultCardDto> responses = restTemplate.exchange(uritask, HttpMethod.GET, request, ResultCardDto.class);
 					if(responses.getStatusCode().equals(HttpStatus.OK))

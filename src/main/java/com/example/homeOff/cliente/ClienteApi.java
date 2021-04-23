@@ -20,8 +20,8 @@ import org.springframework.web.client.RestTemplate;
 public class ClienteApi {
 private static final String GETALLPROYECTS="https://totalplay.leankit.com/io/board/";
 private static final String token="af8c9591748b5d745f3a39bdd98e4adac98ee01073c0ea1a86bee532bcd5d1c2afd652175689bf31b9de0a89df5224af30c7c536d086f1716a3cf837744dbc2e";
-private static final String GETCARDFORID="https://totalplay.leankit.com/io/board/1520404280/card";
-private static final String GETTASKFORID="https://totalplay.leankit.com/io/card/1520584842/tasks";
+private static final String GETCARDFORID="https://totalplay.leankit.com/io/card?board=1520404280";
+private static final String GETTASKFORID="https://totalplay.leankit.com/io/card/1529672200/tasks";
 private static final String GETIDBOARD = "https://totalplay.leankit.com/io/board/1520404280";
 
 static RestTemplate restTemplate = new RestTemplate();

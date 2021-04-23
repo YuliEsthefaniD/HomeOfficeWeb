@@ -254,7 +254,7 @@
 												<span class="js-show-details hide hover-content-child smoth float-right pt-2 medium main smallest" @click="getNombre('<c:out value="${card.title}"/>')">Detalles <img src="/resources/assets/icons/generales/chev_right.svg"></span>
 											</div>
 											<div class="col-3 p-0 px-3 py-1 bl-gray">
-												<span class="medium main small">14 Abril</span>
+												<span class="medium main small">${card.plannedFinish}</span>
 											</div>
 											<div class="col-3 p-0 px-3 py-1 bl-gray">
 												<c:forEach items="${card.assignedUsers}" var="user">
@@ -273,7 +273,7 @@
 												<div class="hide js-next-content custom-control custom-checkbox check-task custom-control-inline">
 													<input type="checkbox" class="custom-control-input" id="checkTaskNew">
 													<label class="custom-control-label medium main small pt-1" for="checkTaskNew"></label>
-													<input class="input-clear border-0 small d-inline-block w-300px" type="" name="" placeholder="Escribe el nombre de la tarea…">
+													<input class="input-clear border-0 small d-inline-block w-300px" type="" name="" placeholder="Escribe el nombre de la tarea">
 												</div>
 											</div>
 
@@ -505,7 +505,7 @@
 <!-- /Modal: M&aacute;s Informaci&oacute;n -->
 
 <!-- Component: Detalles -->
-		<div class="js-content-details hide position-absolute bg-white rounded-lg shadow">
+		<div class="js-content-details hide floating-elements bg-white rounded-lg shadow">
 			<div class="p-3">
 				<div class="row">
 					<div class="col">
