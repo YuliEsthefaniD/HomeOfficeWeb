@@ -39,7 +39,7 @@ public class ProyectoController {
 	@GetMapping(value="proyecto-detalle")
 	public ModelAndView pageProyectoTareas(){
 		ModelAndView modelAndView = new ModelAndView("proyecto/proyecto-detalle");
-		modelAndView.addObject("cards", proyectosService.Producto("1520404280"));
+		modelAndView.addObject("cards", proyectosService.Producto("1553458169"));
 		return modelAndView;
 	}
 }

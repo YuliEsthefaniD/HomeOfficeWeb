@@ -12,6 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap" rel="stylesheet">
 		<link rel="icon" type="image/png" href="/resources/assets/icons/favicon.svg">
+		<link rel="stylesheet" href="/resources/selected2/css/select2.min.css">
 
 		<title>Total Office | Proyectos</title>
 	</head>
@@ -227,10 +228,10 @@
 									<h6 class="main semibold m-0">Nombre de la tarea</h6>
 								</div>
 								<div class="col-3 px-3 py-3 text-center bl-gray">
-									<span class="medium main">Fecha de entrega</span><img class="ml-2" src="/resources/assets/icons/generales/arrange_dark.svg">
+									<span class="medium main">Fecha de entrega</span>
 								</div>
 								<div class="col-3 px-3 py-3 text-center bl-gray">
-									<span class="medium main">Responsable</span><img class="ml-2" src="/resources/assets/icons/generales/arrange_dark.svg">
+									<span class="medium main">Responsable</span>
 								</div>
 							</div>
 
@@ -251,7 +252,8 @@
 													<input type="checkbox" class="custom-control-input" id="checkTask1">
 													<label class="custom-control-label medium main small pt-1" for="checkTask1"><c:out value="${card.title}"/></label>
 												</div>
-												<span class="js-show-details hide hover-content-child smoth float-right pt-2 medium main smallest" @click="getNombre('<c:out value="${card.title}"/>')">Detalles <img src="/resources/assets/icons/generales/chev_right.svg"></span>
+												<span class="js-show-details hide hover-content-child smoth float-right pt-2 medium main smallest" 
+												@click="getNombre('${card.id}','${card.plannedFinish}')">Detalles <img src="/resources/assets/icons/generales/chev_right.svg"></span>
 											</div>
 											<div class="col-3 p-0 px-3 py-1 bl-gray">
 												<span class="medium main small">${card.plannedFinish}</span>
@@ -526,8 +528,13 @@
 						<span class="gray small">Responsable</span>
 					</div>
 					<div class="col">
-						<img class="w-30px rounded-circle border border-light shadow mr-3" src="/resources/assets/img/test/test_team_item_2.png">
-						<span class="semibold main small">Deysi Portillo</span>
+					    <template v-for="(item , index) in usuarioTask">
+						    <img class="w-30px rounded-circle border border-light shadow mr-3" :src="item.avatar">
+							<span class="semibold main small">{{item.fullName}}</span>
+					    </template>
+					    <select name="inputTecnologias" multiple="multiple" style="width:100%"  class="form-control select-usuarios">
+			            </select>
+						
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -535,7 +542,7 @@
 						<span class="gray small">Fecha de entrega</span>
 					</div>
 					<div class="col">
-						<span class="semibold main small">14 Abril</span>
+						<span class="semibold main small">{{fechaTask}}</span>
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -553,22 +560,21 @@
 					<div class="col">
 						<div class="group-form-fieldset smoth mb-3">
 							<label class="js-mat-label">Detalles</label>
-							<textarea class="js-mat-input small" placeholder="Agrega m&aacute;s detalles a esta tarea" rows="2"></textarea>
+							<textarea class="js-mat-input small" placeholder="Agrega m&aacute;s detalles a esta tarea" rows="2">{{desTask}}</textarea>
+							
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="mb-3 overflow-auto h-60px">
-				<div class="bg-muted mb-1 px-3 py-2">
-					<img class="w-20px rounded-circle border border-light shadow" src="/resources/assets/img/test/test_team_item_3.png">
-					<span class="medium main small ">Herzon cre&oacute; esta tarea</span>&nbsp;<span class="gray small">Hace 15 d&iacute;as</span>
-					<div class="gray small pl-4">Herzon cambi&oacute; la fecha de entrega a 26 mar. Hace 2 minutos</div>
-				</div>
-				<div class="bg-muted mb-1 px-3 py-2">
-					<img class="w-20px rounded-circle border border-light shadow" src="/resources/assets/img/test/test_team_item_3.png">
-					<span class="medium main small ">Herzon cre&oacute; esta tarea</span>&nbsp;<span class="gray small">Hace 15 d&iacute;as</span>
-					<div class="gray small pl-4">Herzon cambi&oacute; la fecha de entrega a 26 mar. Hace 2 minutos</div>
-				</div>
+				
+				 <template v-for="(item , index) in commentsTask">
+					 <div class="bg-muted mb-1 px-3 py-2">
+						<img class="w-20px rounded-circle border border-light shadow" :src="item.avatar">
+						<span class="medium main small ">{{item.user}} realiz&oacute; un comentario</span>&nbsp;<span class="gray small">{{item.fecha}}</span>
+						<div class="gray small pl-4" v-html="item.description"></div>
+					</div>
+				 </template>
 			</div>
 			<div class="row m-0 pb-3 bg-muted">
 				<div class="col-1">
@@ -597,6 +603,7 @@
 		<!-- jQuery first, then Popper./resources/js, then Bootstrap /resources/js -->
 		<script src="https://cdn.jsdelivr.net/npm/vue" type="text/javascript"></script>
 		<script src="/resources/js/ajax-jquery-3.5.1.min.js"></script>
+		<script src="/resources/selected2/js/select2.min.js" type="text/javascript"></script>
 		<script src="/resources/js/bootstrap.bundle.min.js"></script>
 		<script src="/resources/js/proyecto/functionProyectos-tareas.js"></script>
 		<script src="/resources/js/functions.js"></script>
