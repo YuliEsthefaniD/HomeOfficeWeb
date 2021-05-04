@@ -194,7 +194,9 @@ a, [class*=btn-], .smoth, .smoth * { transition: all .3s ease; cursor: pointer;}
 .w-6			{ width: 6%; }
 .h-60px			{ height: 60px; }
 .h-100vh		{ height: 100vh; }
+.h-100px		{ height: 100px; }
 .h-300px		{ height: 300px; }
+.h-590px		{ height: 590px; }
 .h-800px		{ height: 800px; }
 .h-mx-content	{ height: max-content; }
 
@@ -319,6 +321,8 @@ a, [class*=btn-], .smoth, .smoth * { transition: all .3s ease; cursor: pointer;}
 	max-width: 100%;
 }
 
-
+.color-blue{
+	color: #509aff;
+}
 
 

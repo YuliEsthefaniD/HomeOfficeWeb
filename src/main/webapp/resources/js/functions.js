@@ -3,7 +3,6 @@ $(document).ready(function () {
 		$('.js-fade-toggle').click(function() {
 		$(this).children('.js-fade-content').fadeToggle(150);
 	});
-
 	$('.js-next-toggle').click(function() {
 		$(this).fadeToggle(10);
 		$(this).next('.js-next-content').fadeToggle(150);

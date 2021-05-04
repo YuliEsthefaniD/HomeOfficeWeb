@@ -507,7 +507,7 @@
 <!-- /Modal: M&aacute;s Informaci&oacute;n -->
 
 <!-- Component: Detalles -->
-		<div class="js-content-details hide floating-elements bg-white rounded-lg shadow">
+		<div class="js-content-details hide floating-elements bg-white rounded-lg overflow-auto h-590px shadow">
 			<div class="p-3">
 				<div class="row">
 					<div class="col">
@@ -528,10 +528,6 @@
 						<span class="gray small">Responsable</span>
 					</div>
 					<div class="col">
-					    <template v-for="(item , index) in usuarioTask">
-						    <img class="w-30px rounded-circle border border-light shadow mr-3" :src="item.avatar">
-							<span class="semibold main small">{{item.fullName}}</span>
-					    </template>
 					    <select name="inputTecnologias" multiple="multiple" style="width:100%"  class="form-control select-usuarios">
 			            </select>
 						
@@ -560,20 +556,19 @@
 					<div class="col">
 						<div class="group-form-fieldset smoth mb-3">
 							<label class="js-mat-label">Detalles</label>
-							<textarea class="js-mat-input small" placeholder="Agrega m&aacute;s detalles a esta tarea" rows="2">{{desTask}}</textarea>
+							<div contenteditable="true" class="js-mat-input small border overflow-auto rounded h-100px" v-html="desTask" placeholder="Agrega m&aacute;s detalles a esta tarea"  ></div>
 							
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="mb-3 overflow-auto h-60px">
-				
 				 <template v-for="(item , index) in commentsTask">
 					 <div class="bg-muted mb-1 px-3 py-2">
 						<img class="w-20px rounded-circle border border-light shadow" :src="item.avatar">
 						<span class="medium main small ">{{item.user}} realiz&oacute; un comentario</span>&nbsp;<span class="gray small">{{item.fecha}}</span>
 						<div class="gray small pl-4" v-html="item.description"></div>
-					</div>
+					 </div>
 				 </template>
 			</div>
 			<div class="row m-0 pb-3 bg-muted">

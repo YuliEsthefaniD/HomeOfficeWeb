@@ -18,6 +18,7 @@ var proyecto = new Vue({
 		],
 		commentsTask: [],
 		optionsUsers:[],
+		selectedUsers:"",
 	},
 	created() {
     },
@@ -34,7 +35,6 @@ var proyecto = new Vue({
 				        	proyecto.nombreBoard = result.title; 
 				        	var userD= result.users;
 				        	for(i in userD){
-				        	  
 				        	  proyecto.optionsUsers.push({
 						         id: userD[i].id,
 								 text: userD[i].fullName
@@ -84,6 +84,8 @@ var proyecto = new Vue({
 		        	var userAsig = result.assignedUsers; 
 		        	proyecto.usuarioTask.splice(0);
 		        	proyecto.desTask = result.description;
+		        	proyecto.selectedUsers = "";
+		        	$(".select-usuarios" ).val("");
 		        	for(i in userAsig){
 			           proyecto.usuarioTask.push({
 					         id: userAsig[i].id,
@@ -91,8 +93,14 @@ var proyecto = new Vue({
 							 emailAddress: userAsig[i].emailAddress,
 							 avatar: userAsig[i].avatar
 					     })
-						    
+					   proyecto.selectedUsers= proyecto.selectedUsers + userAsig[i].id + ",";   
+					   
 				    } 
+				    if(userAsig.length>0){
+				       $('.select-usuarios').val(proyecto.selectedUsers.split(",")).trigger('change.select2'); 
+				    }
+				    
+			        
 				    proyecto.getComments(id);
 		        },
 		        error: function(xhr,status,error){

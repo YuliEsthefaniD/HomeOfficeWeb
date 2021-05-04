@@ -2,15 +2,24 @@
 <html lang="es">
 	<head>
 		<!-- Required meta tags -->
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Bootstrap CSS -->
+				<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		
 		<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/resources/css/styleP.css">
 		<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
-
+        <link rel="stylesheet" type="text/css" href="/resources/css/styleCalendar.css">
 		<link rel="icon" type="image/png" href="/resources/assets/icons/favicon.svg">
+        <link rel="stylesheet" type="text/css" href="/resources/css/styleCalendar2.css">
 
+        <!--  Date Picker -->
+         <!-- Include Bootstrap Datepicker -->
+	     <link rel="stylesheet" type="text/css" href="/resources/css/datepicker/bootstrap-datepicker.css">
+	               
+ 	
 		<title>Total Office | Tareas</title>
 	</head>
 
@@ -501,29 +510,206 @@
 							e" id="nav-calendario" role="tabpanel" aria-labelledby="nav-calendario-tab">
 								<div class="row">
 								<div class="col-8">
-								   <div class="card bg-transparent alig-items-center mt-2">
-								     <img class="pt-1 w-500px" style="" src="/resources/assets/icons/generales/calendarioE.png">
+								   <div class="container card bg-transparent alig-items-center mt-2">
+								    <div id="holder" class="row" ></div>
+								     <script type="text/template" charset="UTF-8" id="tmpl">
+										  {{ 
+										  var date = date || new Date(),
+										      month = date.getMonth(), 
+										      year = date.getFullYear(), 
+										      first = new Date(year, month, 1), 
+										      last = new Date(year, month + 1, 0),
+										      startingDay = first.getDay(), 
+										      thedate = new Date(year, month, 1 - startingDay),
+										      dayclass = lastmonthcss,
+										      today = new Date(),
+										      i, j; 
+										  if (mode === 'week') {
+										    thedate = new Date(date);
+										    thedate.setDate(date.getDate() - date.getDay());
+										    first = new Date(thedate);
+										    last = new Date(thedate);
+										    last.setDate(last.getDate()+6);
+										  } else if (mode === 'day') {
+										    thedate = new Date(date);
+										    first = new Date(thedate);
+										    last = new Date(thedate);
+										    last.setDate(thedate.getDate() + 1);
+										  }
+										  
+										  }}
+										  <table class="calendar-table table table-condensed table-tight table-responsive">
+										    <thead>
+										      <tr>
+										        <td colspan="7" style="text-align: center">
+										          <table style="white-space: nowrap; width: 100%">
+										            <tr>
+										              <td style="text-align: left;">
+										                <span class="btn-group">
+										                  <button class="js-cal-prev btn btn-default color-blue" style="color: #509aff;">&#10094;</button>
+										                  <span class="btn-group btn-group-lg">
+										                    {{ if (mode !== 'day') { }}
+										                      {{ if (mode === 'month') { }}<button class="js-cal-option btn " data-mode="year"><strong>{{: months[month] }}</strong></button>{{ } }}
+										                      {{ if (mode ==='week') { }}
+										                        <button class="btn disabled"><strong>{{: shortMonths[first.getMonth()] }} {{: first.getDate() }} - {{: shortMonths[last.getMonth()] }} {{: last.getDate() }}</strong></button>
+										                      {{ } }}
+										                      <button class="js-cal-years btn "><strong>{{: year}}</strong></button> 
+										                    {{ } else { }}
+										                      <button class="btn btn-link disabled"><strong>{{: date.toDateString() }}</strong></button> 
+										                    {{ } }}
+										                  </span>
+										                  <button class="js-cal-next btn btn-default color-blue" style="color: #509aff;">&#10095;</button>
+										                </span>
+										                <button class="js-cal-option btn btn-default {{: first.toDateInt() <= today.toDateInt() && today.toDateInt() <= last.toDateInt() ? 'active':'' }}" data-date="{{: today.toISOString()}}" data-mode="month">{{: todayname }}</button>
+										              </td>
+										              <td style="text-align: right">
+										                <span class="btn-group">
+										                  <button class="rounded-pill btn btn-outline-primary medium p-2 py-0 d-inline-block js-cal-option {{: mode==='year'? 'active':'' }}" data-mode="year">Año</button>
+										                  <button class="rounded-pill btn btn-outline-primary medium p-2 py-0 d-inline-block js-cal-option {{: mode==='month'? 'active':'' }}" data-mode="month">Mes</button>
+										                  <button class="rounded-pill btn btn-outline-primary medium p-2 py-0 d-inline-block js-cal-option js-cal-option {{: mode==='week'? 'active':'' }}" data-mode="week">Semana</button>
+										                  <button class="rounded-pill btn btn-outline-primary medium p-2 py-0 d-inline-block js-cal-option js-cal-option btn btn-default {{: mode==='day'? 'active':'' }}" data-mode="day">Dia</button>
+										                </span>
+										                
+										              </td>
+										             <td>
+										               <div class="rounded-pill btn btn-outline-primary medium pl-3 pr-3 p-2 py-0 d-inline-block">
+										                  <i class="fas fa-calendar-day"></i>
+											              <span class="d-inline-block align-middle semibold small" data-toggle="modal" data-target="#modalNuevoEvento">Crear Evento</span>
+										               </div>
+										             </td>
+										            </tr>
+										          </table>
+										          
+										        </td>
+										      </tr>
+										    </thead>
+										    {{ if (mode ==='year') {
+										      month = 0;
+										    }}
+										    <tbody>
+										      {{ for (j = 0; j < 3; j++) { }}
+										      <tr>
+										        {{ for (i = 0; i < 4; i++) { }}
+										        <td class="border calendar-month month-{{:month}} js-cal-option" data-date="{{: new Date(year, month, 1).toISOString() }}" data-mode="month" data-toggle="modal" data-target="#modalNuevoEvento">
+										          {{: months[month] }}
+										          {{ month++;}}
+										        </td>
+										        {{ } }}
+										      </tr>
+										      {{ } }}
+										    </tbody>
+										    {{ } }}
+										    {{ if (mode ==='month' || mode ==='week') { }}
+										    <thead>
+										      <tr class="c-weeks">
+										        {{ for (i = 0; i < 7; i++) { }}
+										          <th class="c-name">
+										            {{: days[i] }}
+										          </th>
+										        {{ } }}
+										      </tr>
+										    </thead>
+										    <tbody>
+										      {{ for (j = 0; j < 6 && (j < 1 || mode === 'month'); j++) { }}
+										      <tr>
+										        {{ for (i = 0; i < 7; i++) { }}
+										        {{ if (thedate > last) { dayclass = nextmonthcss; } else if (thedate >= first) { dayclass = thismonthcss; } }}
+										        <td class="border calendar-day {{: dayclass }} {{: thedate.toDateCssClass() }} {{: date.toDateCssClass() === thedate.toDateCssClass() ? 'selected':'' }} {{: daycss[i] }} js-cal-option" data-date="{{: thedate.toISOString() }}" data-toggle="modal" data-target="#modalNuevoEvento">
+										          <div class="date" style="text-align:right">{{: thedate.getDate() }}</div>
+										          {{ thedate.setDate(thedate.getDate() + 1);}}
+										        </td>
+										        {{ } }}
+										      </tr>
+										      {{ } }}
+										    </tbody>
+										    {{ } }}
+										    {{ if (mode ==='day') { }}
+										    <tbody>
+										      <tr>
+										        <td colspan="7">
+										          <table class="table table-striped table-condensed table-tight-vert" >
+										            <thead>
+										              <tr>
+										                <th> </th>
+										                <th style="text-align: center; width: 100%">{{: days[date.getDay()] }}</th>
+										              </tr>
+										            </thead>
+										            <tbody>
+										              <tr>
+										                <th class="timetitle" >Todo el Dia</th>
+										                <td class="{{: date.toDateCssClass() }}">  </td>
+										              </tr>
+										              <tr>
+										                <th class="timetitle" >Antes 6 AM</th>
+										                <td class="time-0-0"> </td>
+										              </tr>
+										              {{for (i = 6; i < 22; i++) { }}
+										              <tr>
+										                <th class="timetitle" >{{: i <= 12 ? i : i - 12 }} {{: i < 12 ? "AM" : "PM"}}</th>
+										                <td class="time-{{: i}}-0"> </td>
+										              </tr>
+										              <tr>
+										                <th class="timetitle" >{{: i <= 12 ? i : i - 12 }}:30 {{: i < 12 ? "AM" : "PM"}}</th>
+										                <td class="time-{{: i}}-30"> </td>
+										              </tr>
+										              {{ } }}
+										              <tr>
+										                <th class="timetitle" >Despues 10 PM</th>
+										                <td class="time-22-0"> </td>
+										              </tr>
+										            </tbody>
+										          </table>
+										        </td>
+										      </tr>
+										    </tbody>
+										    {{ } }}
+										  </table>
+
+	</script>
 								   </div>
 								</div>
-								<div class="col-4">
-                                        <div class="card">
+								<div class="col-4 h-80">
+                                        <div class="card " style="height:400px">
 										  <div class="card-header bg-light">
 											Mis Calendarios
 										  </div>
 										  <div class="card-body">
-										    <img class="pt-1 w-30px" src="/resources/assets/icons/generales/sverde.png">
-											<span class="small">Total Play</span>
-											<br>
-											<img class="pt-1 w-27px" src="/resources/assets/icons/generales/sazul.png">
-											<span class="small">Tareas</span>
-											<br>
-											<img class="pt-1 w-30px" src="/resources/assets/icons/generales/smorado.png">
-											<span class="small">Festivos en M&eacute;xico</span>
+										       <label class="container-checkbox checkbox-green">TotalPlay
+												  <input type="checkbox" checked="checked">
+												  <span class="checkmark"></span>
+												</label>
+												<label class="container-checkbox checkbox-pink">Tareas
+												  <input type="checkbox" checked="checked">
+												  <span class="checkmark"></span>
+												</label>
+												<label class="container-checkbox checkbox-blue">Festivos de M&eacute;xico
+												  <input type="checkbox" checked="checked">
+												  <span class="checkmark"></span>
+												</label>
 										  </div>
 									     </div>
 									  <div class="">
 										  <div class="card bg-transparent alig-items-center mt-2">
-												  <img class="pt-1 w-80" src="/resources/assets/icons/generales/calendarioP.png">
+												  <div class="calendar">
+													    <div class="calendar__info">
+													        <div class="calendar__prev" id="prev-month">&#10094;</div>
+													        <div class="calendar__month" id="month"></div>
+													        <div class="calendar__year" id="year"></div>
+													        <div class="calendar__next" id="next-month">&#10095;</div>
+													    </div>
+													
+													    <div class="calendar__week">
+													        <div class="calendar__day calendar__item">Dom</div>
+													        <div class="calendar__day calendar__item">Lun</div>
+													        <div class="calendar__day calendar__item">Mar</div>
+													        <div class="calendar__day calendar__item">Mie</div>
+													        <div class="calendar__day calendar__item">Jue</div>
+													        <div class="calendar__day calendar__item">Vie</div>
+													        <div class="calendar__day calendar__item">Sab</div>
+													    </div>
+													
+													    <div class="calendar__dates" id="dates"></div>
+												   </div>
 										  </div>
 									  
 									  </div>
@@ -535,6 +721,80 @@
 					
 				</div> <!-- /col -->
 			</div>	<!-- /row -->
+        <!-- Modal: Nuevo Evento-->
+		<div class="modal" id="modalNuevoEvento"   tabindex="-1" aria-labelledby="modalNuevoEvento" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-lg" style="width:510px;">
+				<div class="modal-content border-0 px-2">
+					<div class="modal-header">
+						<h5 class="modal-title semibold main" id="modalEditarProyectoLabel">Crear Evento</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true"><img src="/resources/assets/icons/generales/close.svg"></span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-12">
+							   <div class="row m-0">
+									<div class="col p-0">
+										<div class="group-form-fieldset smoth mb-3">
+											<label for="staticEmail" class="col-sm-2 col-form-label">Fecha</label>
+							               <input type='text' class="js-mat-input form-control" id='datetimepicker4' />
+										</div>	
+									</div>
+									<div class="col p-0 pl-4">
+										<div class="group-form-fieldset smoth mb-3">
+											<label for="staticEmail" class="col-sm-2 col-form-label">Fecha</label>
+							         <input type='text' class="js-mat-input form-control" id='datetimepicker5' />	
+										</div>	
+									</div>
+								</div>
+								<script type="text/javascript">
+							         $(function () {
+							             $('#datetimepicker4').datepicker({
+							            	 format: 'yyyy-mm-dd'
+								             });
+							             $('#datetimepicker5').datepicker({
+							            	 format: 'yyyy-mm-dd'
+								             });
+							         });
+							      </script>
+								<div class="group-form-fieldset smoth mb-3">
+									<input class="js-mat-input" type="" name="titleEvent" placeholder="Añade un titulo">
+								</div>
+								<div class="group-form-fieldset smoth mb-3">
+									<input class="js-mat-input" type="" name="titleEvent" placeholder="Añade Invitados">
+									
+								</div>
+								<div class="group-form-fieldset smoth mb-3">
+								    <span><img src="/resources/assets/icons/generales/meet.png"></span>
+	                                <button class="btn btn-primary">Añadir video llamada con Meet</button>
+							    </div>
+								<div class="group-form-fieldset smoth mb-3">
+									<input class="js-mat-input" type="" name="titleEvent" placeholder="Añade una descripci&oacute;n">
+								</div>
+								<div class="form-group row">
+	                                <label for="staticEmail" class="col-sm-2 col-form-label small gray">Calendario</label>
+								    <div class="col-sm-8">
+                                      <span class="medium main"><span class="pointer-red rounded-circle d-inline-block mr-2"></span>Totalplay</span>								    
+                                    </div>
+							    </div>
+							    <div class="form-group row">
+								    <label for="staticEmail" class="col-sm-2 col-form-label small gray">Proyecto</label>
+								    <div class="col-sm-10">
+								      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="TP- Totalplay Bank">
+								    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<span class="blue semibold btn" data-dismiss="modal">Cancelar</span>
+						<span class="btn btn-primary bg-blue rounded-pill" data-dismiss="modal">Crear Evento</span>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- /Modal: Nuevo Evento  -->
 		</div>	<!-- /container -->
 
 
@@ -542,11 +802,13 @@
 			<img src="/resources/assets/icons/generales/chat.svg">
 		</div>
 
-
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="/resources/js/ajax-jquery-3.5.1.min.js"></script>
 		<script src="/resources/js/bootstrap.bundle.min.js"></script>
 		<script src="/resources/js/functions.js"></script>
-		<script src="/resources/js/common/functionCommon.js"></script>
-	</body>
+		<script src="/resources/js/common/functionCalendar2.js"></script>
+		<script src="/resources/js/common/functionCalendar.js"></script>
+		<script src="/resources/js/bootstrap-datepicker.js"></script>
+        
+   </body>
 </html>
