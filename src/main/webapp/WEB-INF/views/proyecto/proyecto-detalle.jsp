@@ -205,20 +205,6 @@
 								</div>
 								<div class="col-5 p-0 d-flex align-items-center justify-content-end">
 									<div class="small">
-										<span class="bg-muted p-3 rounded-lg smoth gray medium"><img class="pr-2" src="/resources/assets/icons/actividades/tarea_no_finalizada.svg">Tareas sin finalizar</span>
-										<span class="medium main px-3 dropdown-toggle no-chev smoth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><img class="pr-2" src="/resources/assets/icons/generales/adjuntar.svg">Adjuntar enlace</span>
-										<div class="hide js-fade-content position-absolute bg-white p-2 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right">
-											<p class="main medium small m-0">Adjuntar un enlace</p>
-											<div class="group-form-fieldset smoth mb-2 small">
-												<label class="js-mat-label">V&iacute;nculo</label>
-												<input class="js-mat-input" type="" name="" placeholder="Pegue un v&iacute;nculo aqui">
-											</div>
-											<div class="group-form-fieldset smoth mb-2 small">
-												<label class="js-mat-label">Nombre enlace</label>
-												<input class="js-mat-input" type="" name="" placeholder="Nombre del enlace">
-											</div>
-											<div class="btn btn-primary bg-blue rounded-pill text-white w-100 semibold smallest d-inline-block" data-toggle="modal" data-target="#modalMasInformacion">Adjuntar</div>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -249,8 +235,15 @@
 										<div class="row m-0 w-100 bb-gray hover-bg-muted smoth">
 											<div class="col-6 p-0 px-3 py-1 hover-show-child">
 												<div class="d-inline-block custom-control custom-checkbox check-task" >
-													<input type="checkbox" class="custom-control-input" id="checkTask1">
-													<label class="custom-control-label medium main small pt-1" for="checkTask1"><c:out value="${card.title}"/></label>
+												    <template v-if="${card.laneId} == ${card.id-1}">
+													  <input type="checkbox" class="custom-control-input" id="checkTask-<c:out value="${card.id}"/>" @click="editTaskLane(${card.id})" checked>
+													<label class="custom-control-label medium main small pt-1" for="checkTask-<c:out value="${card.id}"/>"><c:out value="${card.title}"/></label>
+													</template>
+													<template v-else>
+													  <input type="checkbox" class="custom-control-input" id="checkTask-<c:out value="${card.id}"/>" @click="editTaskLane(${card.id})">
+													<label class="custom-control-label medium main small pt-1" for="checkTask-<c:out value="${card.id}"/>"><c:out value="${card.title}"/></label>
+													</template>
+													
 												</div>
 												<span class="js-show-details hide hover-content-child smoth float-right pt-2 medium main smallest" 
 												@click="getNombre('${card.id}','${card.plannedFinish}')">Detalles <img src="/resources/assets/icons/generales/chev_right.svg"></span>
@@ -266,6 +259,7 @@
 													</div>
 												</c:forEach>
 											</div>
+											
 										</div>
 										</c:forEach>
 										
@@ -511,13 +505,13 @@
 			<div class="p-3">
 				<div class="row">
 					<div class="col">
-						<div class="rounded-pill btn btn btn-outline-green medium px-3 py-2 d-inline-block smallest">
+						<div class="rounded-pill btn btn btn-outline-green medium px-3 py-2 d-inline-block smallest" @click="finalTask()" >
 							<svg width="16.785" height="12.575" viewBox="0 0 16.785 12.575"><path d="M9,16.2,5.5,12.7a.99.99,0,1,0-1.4,1.4l4.19,4.19a1,1,0,0,0,1.41,0L20.3,7.7a.99.99,0,0,0-1.4-1.4Z" transform="translate(-3.807 -6.007)" fill="#69e092"/></svg>
 							<span class="ml-2 semibold">Marcar como finalizada</span>
 						</div>	
 					</div>
 					<div class="col text-right">
-						<img class="js-show-details" src="/resources/assets/icons/generales/tab.svg">
+						<img class="js-show-details" src="/resources/assets/icons/generales/tab.svg" @click="editDetallesTask()">
 					</div>		
 				</div>
 				<div class="row m-0 py-3">
@@ -528,9 +522,8 @@
 						<span class="gray small">Responsable</span>
 					</div>
 					<div class="col">
-					    <select name="inputTecnologias" multiple="multiple" style="width:100%"  class="form-control select-usuarios">
+					    <select name="inputUsuarios" multiple="multiple" style="width:100%"  class="form-control select-usuarios">
 			            </select>
-						
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -556,13 +549,13 @@
 					<div class="col">
 						<div class="group-form-fieldset smoth mb-3">
 							<label class="js-mat-label">Detalles</label>
-							<div contenteditable="true" class="js-mat-input small border overflow-auto rounded h-100px" v-html="desTask" placeholder="Agrega m&aacute;s detalles a esta tarea"  ></div>
+							<div contenteditable="true" id="detallesTask" class="js-mat-input small border overflow-auto rounded h-100px" v-html="desTask" placeholder="Agrega m&aacute;s detalles a esta tarea"  ></div>
 							
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="mb-3 overflow-auto h-60px">
+			<div class="mb-3 overflow-auto h-100px">
 				 <template v-for="(item , index) in commentsTask">
 					 <div class="bg-muted mb-1 px-3 py-2">
 						<img class="w-20px rounded-circle border border-light shadow" :src="item.avatar">
@@ -577,7 +570,7 @@
 				</div>
 				<div class="col pl-0">
 					<div class="group-form-fieldset smoth w-auto">
-						<textarea class="js-mat-input small" placeholder="Realiza una pregunta o comenta una actualizaci&oacute;" rows="2"></textarea>
+						<textarea class="js-mat-input small text-comments-task" placeholder="Realiza una pregunta o comenta una actualizaci&oacute;n" rows="2"></textarea>
 					</div>
 					<span class="regular small gray mr-3">Colaboradores:</span>
 					<img class="w-20px rounded-circle border border-light shadow mr-2" src="/resources/assets/img/test/test_team_item_4.png">
@@ -588,6 +581,7 @@
 			
 			
 		</div>
+		<input type="hidden" id="boardID" value="<c:out value="${boardID}"/>"/>
 		</div>	<!-- /container -->
 
 		<div class="floating-elements">

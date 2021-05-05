@@ -191,7 +191,8 @@
 
 								<tbody class="tbody-scroll">
 									<template v-for="(item , index) in boards">
-									     <tr onclick="window.location='../proyecto/proyecto-detalle';">
+									     <tr v-on:click="window.location='../proyecto/proyecto-detalle?id='+ item.id">
+
 											<th scope="row" class="main semibold text-ellipsis"><span class="pointer-red rounded-circle d-inline-block mr-2"></span><span class="main">{{item.nombre}}</span></th>
 											<td class="medium main">{{item.unidad}}</td>
 											<td><span class="bg-blue py-1 px-2 rounded-lg small text-white semibold">{{item.fase}}</span></td>

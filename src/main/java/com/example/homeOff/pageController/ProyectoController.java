@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.homeOff.service.impl.ProyectosService;
@@ -37,9 +38,10 @@ public class ProyectoController {
 	}
 	
 	@GetMapping(value="proyecto-detalle")
-	public ModelAndView pageProyectoTareas(){
+	public ModelAndView pageProyectoTareas(@RequestParam (name = "id") String id){
 		ModelAndView modelAndView = new ModelAndView("proyecto/proyecto-detalle");
-		modelAndView.addObject("cards", proyectosService.Producto("1553458169"));
+		modelAndView.addObject("boardID", id);
+		modelAndView.addObject("cards", proyectosService.Producto(id));
 		return modelAndView;
 	}
 }
