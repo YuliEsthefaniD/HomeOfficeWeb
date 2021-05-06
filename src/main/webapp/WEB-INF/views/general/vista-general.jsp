@@ -159,7 +159,7 @@
 								<div class="hide js-fade-content position-absolute bg-white p-3 pl-5 zi-1 rounded-lg border b-gray shadow r-0 mt-1 dropdown-menu dropdown-menu-right">
 									<a href="../perfil/perfil" class="d-block small semibold no-link mb-2 main">Mi Perfil</a>
 									<a href="../perfil/organigrama" class="d-block small semibold no-link mb-2 main">Organigrama</a>
-									<a class="d-block small semibold no-link red">Cerrar sesi&oacute;n</a>
+									<a class="d-block small semibold no-link red" href="#" id="logout">Cerrar sesi&oacute;n</a>
 								</div>								
 							</div>
 
