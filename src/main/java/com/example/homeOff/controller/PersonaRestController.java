@@ -80,8 +80,7 @@ public class PersonaRestController {
 
 	@PatchMapping(value = "/editCardTitle")
 	public void editCard(@RequestBody CommentDto patchDocument) {
-		
-		patchDocument.setId("1561808268");
+
 		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+ patchDocument.getId() ;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + ConstantesCommon.TOKEN);
@@ -98,9 +97,7 @@ public class PersonaRestController {
 	
 	@PostMapping(value = "/addComment")
     public void addComnt(@RequestBody AddCommentDto comment) {
-		
-		System.out.print("Entramos  " + comment);
-		comment.setId("1561808268");
+
 		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+comment.getId() + "/"+ "comment" ;
 		
 		System.out.print("URL   " + uri);
@@ -218,5 +215,19 @@ public class PersonaRestController {
         
     }
 	
-	
+	@PatchMapping(value = "/lane")
+	public void editLaneCard(@RequestBody CommentDto patchDocument) {
+
+		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+ patchDocument.getId() ;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "Bearer " + ConstantesCommon.TOKEN);
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		System.out.println("DATOS"+ patchDocument);
+		String value = patchDocument.getValue();
+		String strJson = "[{\"op\": \"replace\", \"path\": \"/laneId\", \"value\": \"" + value + "\"}]";
+
+		HttpEntity<String> request = new HttpEntity<String>(strJson, headers);
+		RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+		restTemplate.patchForObject(uri, request, String.class);
+	}
 }

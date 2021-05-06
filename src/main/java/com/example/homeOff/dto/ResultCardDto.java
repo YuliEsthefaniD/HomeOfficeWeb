@@ -14,6 +14,8 @@ public class ResultCardDto implements Serializable {
 	
 	private PageMetaDto pageMeta;
 	private List<CardDto> cards;
+	private List<LaneTaskDto> lanes;
+	
 	public PageMetaDto getPageMeta() {
 		return pageMeta;
 	}
@@ -25,6 +27,12 @@ public class ResultCardDto implements Serializable {
 	}
 	public void setCards(List<CardDto> cards) {
 		this.cards = cards;
+	}
+	public List<LaneTaskDto> getLanes() {
+		return lanes;
+	}
+	public void setLanes(List<LaneTaskDto> lanes) {
+		this.lanes = lanes;
 	}
 	
 }

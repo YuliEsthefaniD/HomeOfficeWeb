@@ -23,7 +23,7 @@ public class CardDto implements Serializable{
 	private ResultCardDto task;
 	private String plannedFinish;
 	private Integer laneId;
-	private LaneTaskDto tipeLineT;
+	private List<LaneTaskDto> lanes;
 	
 	public Integer getId() {
 		return id;
@@ -117,11 +117,12 @@ public class CardDto implements Serializable{
 	public void setLaneId(Integer laneId) {
 		this.laneId = laneId;
 	}
-	public LaneTaskDto getTipeLineT() {
-		return tipeLineT;
+	public List<LaneTaskDto> getLanes() {
+		return lanes;
 	}
-	public void setTipeLineT(LaneTaskDto tipeLineT) {
-		this.tipeLineT = tipeLineT;
+	public void setLanes(List<LaneTaskDto> lanes) {
+		this.lanes = lanes;
 	}
 	
+    
 }

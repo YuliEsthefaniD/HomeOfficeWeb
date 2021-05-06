@@ -222,20 +222,21 @@
 							</div>
 
 							<div class="row m-0 bb-gray">
-								<c:forEach items="${cards.tarea}" var="card">	
+								<c:forEach items="${cards.tarea}" var="cards">	
 									<div class="col-12 px-3 py-3 bb-gray">
-										<div data-toggle="collapse" data-target="#collapse-<c:out value="${card.id}"/>" aria-expanded="false" aria-controls="collapse-<c:out value="${tarea.id}"/>">
+										<div data-toggle="collapse" data-target="#collapse-<c:out value="${cards.id}"/>" aria-expanded="false" aria-controls="collapse-<c:out value="${tarea.id}"/>">
 											<img class="align-middle mr-2 rotate180" src="/resources/assets/icons/generales/chev_down_dark.svg">
-											<span class="align-middle semibold main"><c:out value="${card.title}"/> </span>
+											<span class="align-middle semibold main"><c:out value="${cards.title}"/> </span>
 										</div>
 									</div>
 										
-									<div class="collapse show w-100" id="collapse-<c:out value="${card.id}"/>">
-										<c:forEach items="${card.task.cards}" var="card">
+									<div class="collapse show w-100" id="collapse-<c:out value="${cards.id}"/>">
+										<c:forEach items="${cards.task.cards}" var="card">
 										<div class="row m-0 w-100 bb-gray hover-bg-muted smoth">
 											<div class="col-6 p-0 px-3 py-1 hover-show-child">
 												<div class="d-inline-block custom-control custom-checkbox check-task" >
-												    <template v-if="${card.laneId} == ${card.id-1}">
+												<h6></h6>
+												    <template v-if="${card.laneId} == ${cards.lanes[2].id}">
 													  <input type="checkbox" class="custom-control-input" id="checkTask-<c:out value="${card.id}"/>" @click="editTaskLane(${card.id})" checked>
 													<label class="custom-control-label medium main small pt-1" for="checkTask-<c:out value="${card.id}"/>"><c:out value="${card.title}"/></label>
 													</template>

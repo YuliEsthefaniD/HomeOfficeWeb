@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.homeOff.commons.ConstantesCommon;
 import com.example.homeOff.dto.CardDto;
+import com.example.homeOff.dto.LaneTaskDto;
 import com.example.homeOff.dto.ResultCardDto;
 import com.example.homeOff.model.ProyectoDetalleModel;
 
@@ -42,9 +43,15 @@ public class ProyectosService {
 					CardDto car = new CardDto();
 					String uritask = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD + "/" + e.getId() + ConstantesCommon.TASK;
 					car = e;
+				//	https://totalplay.leankit.com/io/card/1566087820/taskboard
 					ResponseEntity<ResultCardDto> responses = restTemplate.exchange(uritask, HttpMethod.GET, request, ResultCardDto.class);
 					if(responses.getStatusCode().equals(HttpStatus.OK))
 						car.setTask(responses.getBody());
+					String lanetask = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD + "/" + e.getId() + "/taskboard";
+					
+					ResponseEntity<ResultCardDto> responsesL = restTemplate.exchange(lanetask, HttpMethod.GET, request, ResultCardDto.class);
+					if(responses.getStatusCode().equals(HttpStatus.OK))
+						car.setLanes(responsesL.getBody().getLanes());
 					cards.add(car);
 				});
 				model.setTarea(cards);
