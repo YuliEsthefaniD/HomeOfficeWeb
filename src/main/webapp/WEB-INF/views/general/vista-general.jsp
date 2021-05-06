@@ -772,7 +772,25 @@
 		<script src="/resources/js/bootstrap.bundle.min.js"></script>
 		<script src="/resources/js/functions.js"></script>
 		<script src="/resources/js/general/functionGeneral.js"></script>
-        <script src="/resources/js/common/functionCommon.js"></script>
-        <script src="/resources/js/functions.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC4Fgm6-jryvQ0UD8yKdQGFcJZccZPvjNA",
+    authDomain: "totalplay-home-office-dev.firebaseapp.com",
+    projectId: "totalplay-home-office-dev",
+    storageBucket: "totalplay-home-office-dev.appspot.com",
+    messagingSenderId: "1081018443674",
+    appId: "1:1081018443674:web:f549798bfe7a852d83bc23"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const fs = firebase.firestore();
+</script>
+		<script src="/resources/js/login/main.js"></script>
 	</body>
 </html>
