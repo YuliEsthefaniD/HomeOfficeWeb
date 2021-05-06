@@ -21,6 +21,7 @@ var proyecto = new Vue({
 		selectedUsers:"",
 		selecTaskID: "",
 		laneTask:"",
+		lnG: "",
 	},
 	created() {
     },
@@ -74,10 +75,11 @@ var proyecto = new Vue({
 				        }
 				    });
 		},
-		getNombre(id,fecha){
-		console.log(id);
+		getNombre(id,fecha,ln){
+		console.log("ID DE LA CARD:" +id);
 		proyecto.selecTaskID = id;
 		proyecto.selectUser();
+		proyecto.lnG = ln;
           $.ajax({
 		        type: "GET",
 		        url: '/cliente/leankit/card/'+id,	    
@@ -240,17 +242,17 @@ var proyecto = new Vue({
 		},
 		finalTask(){
 		   var dat = {};
-			 if((parseInt(proyecto.selecTaskID)-1) == parseInt(proyecto.laneTask)){
+			 if(parseInt(proyecto.lnG) == parseInt(proyecto.laneTask)){
 			    console.log("Esta Completada");
 			    $("#checkTask-"+proyecto.selecTaskID).prop("checked", false); 
 		              dat = {id: proyecto.selecTaskID,
-					    value: parseInt(proyecto.selecTaskID)-2};
+					    value: parseInt(proyecto.lnG)-1};
 			    
 			 }else{
 			    console.log("Esta Completada");
 			    $("#checkTask-"+proyecto.selecTaskID).prop("checked", true); 
 		              dat = {id: proyecto.selecTaskID,
-					    value: parseInt(proyecto.selecTaskID)-1};
+					    value: parseInt(proyecto.lnG)};
 			 }
 			 $.ajax({
 						        type: "PATCH",
@@ -266,7 +268,7 @@ var proyecto = new Vue({
 						        }
 			   });
 		},
-		editTaskLane(id){
+		editTaskLane(id,ln){
 		$.ajax({
 		        type: "GET",
 		        url: '/cliente/leankit/card/'+id,	    
@@ -281,25 +283,25 @@ var proyecto = new Vue({
 		        	proyecto.desTask = result.description;
 		        	proyecto.selectedUsers = "";
 		        	$(".select-usuarios" ).val("");
-				    proyecto.finalTaskCheck(id);
+				    proyecto.finalTaskCheck(id,ln);
 		        },
 		        error: function(xhr,status,error){
 			       
 		        }
 		    });
 		},
-		finalTaskCheck(id){
+		finalTaskCheck(id,ln){
 		   var dat = {};
-			 if((parseInt(id)-1) == parseInt(proyecto.laneTask)){
+			 if(parseInt(ln) == parseInt(proyecto.laneTask)){
 			    console.log("Esta Completada: " +proyecto.selecTaskID + "  value: " + parseInt(proyecto.selecTaskID)-2);
 			    $("#checkTask-"+id).prop("checked", false); 
 		              dat = {id: id,
-					    value: parseInt(id)-2};
+					    value: parseInt(ln)-2};
 			    
 			 }else{
 			    $("#checkTask-"+id).prop("checked", true); 
 		              dat = {id: id,
-					    value: parseInt(id)-1};
+					    value: parseInt(ln)};
 			 }
 			 $.ajax({
 						        type: "PATCH",

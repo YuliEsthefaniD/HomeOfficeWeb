@@ -247,7 +247,7 @@
 													
 												</div>
 												<span class="js-show-details hide hover-content-child smoth float-right pt-2 medium main smallest" 
-												@click="getNombre('${card.id}','${card.plannedFinish}')">Detalles <img src="/resources/assets/icons/generales/chev_right.svg"></span>
+												@click="getNombre('${card.id}','${card.plannedFinish}','${cards.lanes[2].id}')">Detalles <img src="/resources/assets/icons/generales/chev_right.svg"></span>
 											</div>
 											<div class="col-3 p-0 px-3 py-1 bl-gray">
 												<span class="medium main small">${card.plannedFinish}</span>
