@@ -80,12 +80,13 @@ public class PersonaRestController {
 
 	@PatchMapping(value = "/editCardTitle")
 	public void editCard(@RequestBody CommentDto patchDocument) {
-
+		
+		
 		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+ patchDocument.getId() ;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + ConstantesCommon.TOKEN);
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		System.out.println("DATOS"+ patchDocument);
+		
 		String value = patchDocument.getValue();
 		String strJson = "[{\"op\": \"replace\", \"path\": \"/description\", \"value\": \"" + value + "\"}]";
 
@@ -97,10 +98,9 @@ public class PersonaRestController {
 	
 	@PostMapping(value = "/addComment")
     public void addComnt(@RequestBody AddCommentDto comment) {
-
-		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+comment.getId() + "/"+ "comment" ;
 		
-		System.out.print("URL   " + uri);
+		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+comment.getId() + "/"+ "comment" ;
+				
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + ConstantesCommon.TOKEN);
@@ -109,47 +109,36 @@ public class PersonaRestController {
 		String comnt= comment.getText();
 		
 		String strJson = "[{ \"text\": \"" + comnt + "\"}]";
-		System.out.print("strJson  " + strJson);
+		
 		Map<String, Object> params = new HashMap<>();
 		params.put("text", comnt);
 		                  
 		HttpEntity<Map<String, Object>> entity = new HttpEntity<>(params, headers);
-		System.out.print("request  " + entity);
+		
 		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
-		
-		
-        
     }
 	
 	@PostMapping(value = "/addTask")
     public void addTask(@RequestBody TaskDto task) {
 		
-		System.out.print("Entramos  " + task);
-		task.setId("1565232329");
 		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+task.getId() + "/"+ "tasks" ;
-		
-		System.out.print("URL   " + uri);
-		RestTemplate restTemplate = new RestTemplate();
+				
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + ConstantesCommon.TOKEN);
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		
 		String addtask= task.getTitle();
-//		String strJson = "[{\"title\": \""+ addtask +"\", \"laneType\": \"ready\", \"typeId\": \"1565236907\"}]";
-//		System.out.print("strJson  " + strJson);
-		
 		Map<String, Object> params = new HashMap<>();
 		params.put("title", addtask);
 		params.put("laneType", "ready");
 		params.put("typeId", "1565236907");
-		System.out.print("params  " + params);
-		                  
-		HttpEntity<Map<String, Object>> entity = new HttpEntity<>(params, headers);
-		System.out.print("request  " + entity);
-		restTemplate.postForEntity(uri,  entity, String.class);
 		
-		
-        
+		HttpEntity<Map<String, Object>> request = new HttpEntity<>(params, headers);
+
+		RestTemplate restTemp = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+		restTemp.postForObject(uri, request, String.class);
+			
     }
 	
 	
@@ -157,18 +146,15 @@ public class PersonaRestController {
     public void userAssign(@RequestBody UserToAsssignDto user) {
 		System.out.print("Entramos  " + user);
 		
-		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+ "assign" ;		
-		System.out.print("URL   " + uri);
-		
+		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+ "assign" ;				
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + ConstantesCommon.TOKEN);
-		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		
+		headers.setContentType(MediaType.APPLICATION_JSON_UTF8);		
 		String card= user.getCardIds();
 		String Assign= user.getUserIdsToAssign();
-		String strJson = "[{\"cardIds\": [\""+card+"\"], \"userIdsToAssign\": [\""+Assign+"\"], \"wipOverrideComment\": \"New User \"}]";
+		String strJson = "{\"cardIds\": [\""+card+"\"], \"userIdsToAssign\": [\""+Assign+"\"], \"wipOverrideComment\": \"New User\"}";
 		System.out.print("strJson  " + strJson);
 		
 //		Map<String, Object> params = new HashMap<>();
@@ -177,42 +163,34 @@ public class PersonaRestController {
 //		params.put("wipOverrideComment", "New User ");
 //		System.out.print("params  " + params);
 		                  
-		HttpEntity<String>  entity = new HttpEntity<>(strJson, headers);
-		System.out.print("request  " + entity);
-		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
-		 
+		HttpEntity<String>  request = new HttpEntity<>(strJson, headers);
+		System.out.print("request  " + request);
+//		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
+		
+//		HttpEntity<Map<String, Object>> request = new HttpEntity<>(params, headers);
+//		System.out.print("request  " + request);
+		RestTemplate restTemp = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+		restTemp.postForObject(uri, request, String.class);
         
     }
 	
 	@PostMapping(value = "/deleteUserCard")
     public void userUnAssign(@RequestBody UserToAsssignDto user) {
-		System.out.print("Entramos  " + user);
 		
-		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+ "assign" ;		
-		System.out.print("URL   " + uri);
-		
+		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+ "assign" ;				
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + ConstantesCommon.TOKEN);
-		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		
+		headers.setContentType(MediaType.APPLICATION_JSON_UTF8);		
 		String card= user.getCardIds();
-		String Unass= user.getUserIdsToUnassign();
-		String strJson = "[{\"cardIds\": [\""+card+"\"], \"userIdsToAssign\": [\""+Unass+"\"], \"wipOverrideComment\": \"New User \"}]";
-		System.out.print("strJson  " + strJson);
-		
-//		Map<String, Object> params = new HashMap<>();
-//		params.put("cardIds", "["+card+"]");
-//		params.put("userIdsToAssign", "["+Assign+"]");
-//		params.put("wipOverrideComment", "New User ");
-//		System.out.print("params  " + params);
-		                  
-		HttpEntity<String>  entity = new HttpEntity<>(strJson, headers);
-		System.out.print("request  " + entity);
-		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
+		String Assign= user.getUserIdsToUnassign();
+		String strJson = "{\"cardIds\": [\""+card+"\"], \"userIdsToUnassign\": [\""+Assign+"\"], \"wipOverrideComment\": \"New User\"}";
+		HttpEntity<String>  request = new HttpEntity<>(strJson, headers);
+				                  
+		RestTemplate restTemp = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+		restTemp.postForObject(uri, request, String.class);
 		 
-        
     }
 	
 	@PatchMapping(value = "/lane")
