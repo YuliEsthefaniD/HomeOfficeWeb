@@ -144,8 +144,7 @@ public class PersonaRestController {
 	
 	@PostMapping(value = "/addUserCard")
     public void userAssign(@RequestBody UserToAsssignDto user) {
-		System.out.print("Entramos  " + user);
-		
+				
 		String uri = ConstantesCommon.BASE_PATH + ConstantesCommon.CARD+ "/"+ "assign" ;				
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
@@ -155,20 +154,9 @@ public class PersonaRestController {
 		String card= user.getCardIds();
 		String Assign= user.getUserIdsToAssign();
 		String strJson = "{\"cardIds\": [\""+card+"\"], \"userIdsToAssign\": [\""+Assign+"\"], \"wipOverrideComment\": \"New User\"}";
-		System.out.print("strJson  " + strJson);
-		
-//		Map<String, Object> params = new HashMap<>();
-//		params.put("cardIds", "["+card+"]");
-//		params.put("userIdsToAssign", "["+Assign+"]");
-//		params.put("wipOverrideComment", "New User ");
-//		System.out.print("params  " + params);
-		                  
+				                  
 		HttpEntity<String>  request = new HttpEntity<>(strJson, headers);
-		System.out.print("request  " + request);
-//		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
 		
-//		HttpEntity<Map<String, Object>> request = new HttpEntity<>(params, headers);
-//		System.out.print("request  " + request);
 		RestTemplate restTemp = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
 		restTemp.postForObject(uri, request, String.class);
         
