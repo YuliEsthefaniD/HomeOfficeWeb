@@ -237,11 +237,11 @@
 												<div class="d-inline-block custom-control custom-checkbox check-task" >
 												<h6></h6>
 												    <template v-if="${card.laneId} == ${cards.lanes[2].id}">
-													  <input type="checkbox" class="custom-control-input" id="checkTask-<c:out value="${card.id}"/>" @click="editTaskLane(${card.id})" checked>
+													  <input type="checkbox" class="custom-control-input" id="checkTask-<c:out value="${card.id}"/>" @click="editTaskLane(${card.id},${cards.lanes[2].id})" checked>
 													<label class="custom-control-label medium main small pt-1" for="checkTask-<c:out value="${card.id}"/>"><c:out value="${card.title}"/></label>
 													</template>
 													<template v-else>
-													  <input type="checkbox" class="custom-control-input" id="checkTask-<c:out value="${card.id}"/>" @click="editTaskLane(${card.id})">
+													  <input type="checkbox" class="custom-control-input" id="checkTask-<c:out value="${card.id}"/>" @click="editTaskLane(${card.id},${cards.lanes[2].id})">
 													<label class="custom-control-label medium main small pt-1" for="checkTask-<c:out value="${card.id}"/>"><c:out value="${card.title}"/></label>
 													</template>
 													
