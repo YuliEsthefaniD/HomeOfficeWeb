@@ -152,8 +152,9 @@ public class PersonaRestController {
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		headers.setContentType(MediaType.APPLICATION_JSON_UTF8);		
 		String card= user.getCardIds();
-		String Assign= user.getUserIdsToAssign();
-		String strJson = "{\"cardIds\": [\""+card+"\"], \"userIdsToAssign\": [\""+Assign+"\"], \"wipOverrideComment\": \"New User\"}";
+		String Asign= user.getUserIdsToAssign();
+		String usus= Asign.replace("," ,"\",\"");
+		String strJson = "{\"cardIds\": [\""+card+"\"], \"userIdsToAssign\": [\""+usus+"\"], \"wipOverrideComment\": \"New User\"}";
 				                  
 		HttpEntity<String>  request = new HttpEntity<>(strJson, headers);
 		
@@ -172,8 +173,9 @@ public class PersonaRestController {
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		headers.setContentType(MediaType.APPLICATION_JSON_UTF8);		
 		String card= user.getCardIds();
-		String Assign= user.getUserIdsToUnassign();
-		String strJson = "{\"cardIds\": [\""+card+"\"], \"userIdsToUnassign\": [\""+Assign+"\"], \"wipOverrideComment\": \"New User\"}";
+		String Asign= user.getUserIdsToUnassign();
+		String usus= Asign.replace("," ,"\",\"");
+		String strJson = "{\"cardIds\": [\""+card+"\"], \"userIdsToUnassign\": [\""+usus+"\"], \"wipOverrideComment\": \"New User\"}";
 		HttpEntity<String>  request = new HttpEntity<>(strJson, headers);
 				                  
 		RestTemplate restTemp = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
