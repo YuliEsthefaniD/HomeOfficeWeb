@@ -105,6 +105,8 @@ var proyecto = new Vue({
 					   proyecto.selectedUsers= proyecto.selectedUsers + userAsig[i].id + ",";   
 					   
 				    } 
+				     proyecto.selectedUsers = proyecto.selectedUsers.substring(0, proyecto.selectedUsers.length - 1);
+				    
 				     var el = document.getElementById("detallesTask");
 			         console.log("contenido del div:   " + el.innerHTML);
 				    if(userAsig.length>0){
@@ -205,15 +207,16 @@ var proyecto = new Vue({
 				    });
 		   }
 		   proyecto.addCommentsTask($(".text-comments-task").val());
+		   proyecto.editTotalUser();
 		},
 		deleteUsersTask(){
-		  var dat = {id: proyecto.selecTaskID,
-					 value: proyecto.selectedUsers.split(",")};
+		  var dat = {cardIds: proyecto.selecTaskID,
+					 userIdsToUnassign: proyecto.selectedUsers};
 		  $.ajax({
-						        type: "PATCH",
+						        type: "POST",
 						        contentType : "application/json",
 	                            dataType : 'json',
-						        url: '/persona/api/v1/editCardTitle',
+						        url: '/persona/api/v1/deleteUserCard',
 						        data: JSON.stringify(dat),
 						        success: function(result) {
 						           console.log("se guardo la informacion de deleteUsers");
@@ -222,15 +225,23 @@ var proyecto = new Vue({
 							       
 						        }
 		  });
+		  setTimeout(function(){
+				    if($(".select-usuarios" ).val()!=""){
+				      proyecto.addUsersTask();
+				    }else{
+				      location.reload();
+				    }
+		   },3000);
 		},
 		addUsersTask(){
-		  var dat = {id: proyecto.selecTaskID,
-					 value: $(".select-usuarios" ).val()};
+		  var dat = {cardIds: proyecto.selecTaskID,
+					 userIdsToAssign: ($(".select-usuarios" ).val().toString()).substring(0, $(".select-usuarios" ).val().toString() - 1)};
+					 
 		  $.ajax({
-						        type: "PATCH",
+						        type: "POST",
 						        contentType : "application/json",
 	                            dataType : 'json',
-						        url: '/persona/api/v1/editCardTitle',
+						        url: '/persona/api/v1/addUserCard',
 						        data: JSON.stringify(dat),
 						        success: function(result) {
 						           console.log("se guardo la información de addUsers");
@@ -239,6 +250,9 @@ var proyecto = new Vue({
 							       
 						        }
 		  });
+		  setTimeout(function(){
+				      location.reload();
+		   },3000);
 		},
 		finalTask(){
 		   var dat = {};
@@ -247,12 +261,14 @@ var proyecto = new Vue({
 			    $("#checkTask-"+proyecto.selecTaskID).prop("checked", false); 
 		              dat = {id: proyecto.selecTaskID,
 					    value: parseInt(proyecto.lnG)-1};
+					    proyecto.lnG = parseInt(proyecto.lnG)-1;
 			    
 			 }else{
-			    console.log("Esta Completada");
+			    console.log("No Esta Completada");
 			    $("#checkTask-"+proyecto.selecTaskID).prop("checked", true); 
 		              dat = {id: proyecto.selecTaskID,
 					    value: parseInt(proyecto.lnG)};
+					    proyecto.lnG = parseInt(proyecto.lnG);
 			 }
 			 $.ajax({
 						        type: "PATCH",
@@ -337,6 +353,57 @@ var proyecto = new Vue({
 			}
 			$(".text-comments-task").val("");
 		    
+		},
+		addTask(id){
+		   console.log($("#inputAddTask-"+id).val());
+		   var dat = {id: id,
+					    title: $("#inputAddTask-"+id).val()};
+		        $.ajax({
+								        type: "POST",
+								        contentType : "application/json",
+			                            dataType : 'json',
+								        url: '/persona/api/v1/addTask',
+								        data: JSON.stringify(dat),
+								        success: function(result) {
+								           console.log("se guardo la información");
+								        },
+								        error: function(xhr,status,error){
+									       
+								        }
+					   });
+			   $("#inputAddTask-"+id).val("");
+			   setTimeout(function(){
+			        
+				    location.reload();
+				},3000);
+		},
+		addTaskTemp(){
+			 console.log(id);
+				  console.log($("#inputAddTask-"+id).val());
+				  //collapse
+				  
+				 var divtask= '<div class="row m-0 w-100 bb-gray hover-bg-muted smoth"><div class="col-6 p-0 px-3 py-1 hover-show-child"><div class="d-inline-block custom-control custom-checkbox check-task"><h6></h6> <input type="checkbox" id="checkTask-'
+				 +'id de la task'
+				 +'" class="custom-control-input"> <label for="checkTask-'
+				 +'id de la task'
+				 +'" class="custom-control-label medium main small pt-1">'
+				 +'detalle de la lask'
+				 +'</label></div> <span class="js-show-details hide hover-content-child smoth float-right pt-2 medium main smallest">'
+				 +'Detalles <img src="/resources/assets/icons/generales/chev_right.svg"></span></div> <div class="col-3 p-0 px-3 py-1 bl-gray"><span class="medium main small">TBD</span></div> <div class="col-3 p-0 px-3 py-1 bl-gray"></div></div>';
+				 $("#inputContainerTask-"+id).before(divtask);
+				 
+		},
+		editTotalUser(){
+		console.log($(".select-usuarios").val()!= proyecto.selectedUsers);
+			if($(".select-usuarios").val()!= proyecto.selectedUsers){
+			   if(proyecto.selectedUsers!=""){
+			      proyecto.deleteUsersTask();
+			   }else{
+			      proyecto.addUsersTask();
+			   }
+			    
+			}
+		
 		}
 	}
 });

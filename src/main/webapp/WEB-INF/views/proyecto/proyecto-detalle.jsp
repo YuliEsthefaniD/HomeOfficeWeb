@@ -264,13 +264,13 @@
 										</div>
 										</c:forEach>
 										
-										<div class="row m-0 w-100 bb-gray hover-bg-muted smoth">
+										<div class="row m-0 w-100 bb-gray hover-bg-muted smoth" id="inputContainerTask-<c:out value="${cards.id}"/>">
 											<div class="col-6 p-0 px-3 py-1 hover-show-child">
 												<span class="gray medium small js-next-toggle">Agregar tarea</span>
 												<div class="hide js-next-content custom-control custom-checkbox check-task custom-control-inline">
 													<input type="checkbox" class="custom-control-input" id="checkTaskNew">
 													<label class="custom-control-label medium main small pt-1" for="checkTaskNew"></label>
-													<input class="input-clear border-0 small d-inline-block w-300px" type="" name="" placeholder="Escribe el nombre de la tarea">
+													<input class="input-clear border-0 small d-inline-block w-300px" id="inputAddTask-<c:out value="${cards.id}"/>" type="" name="" @keyup.enter="addTask('${cards.id}')"  placeholder="Escribe el nombre de la tarea">
 												</div>
 											</div>
 

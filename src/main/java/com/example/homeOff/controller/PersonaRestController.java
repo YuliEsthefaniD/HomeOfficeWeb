@@ -132,7 +132,7 @@ public class PersonaRestController {
 		Map<String, Object> params = new HashMap<>();
 		params.put("title", addtask);
 		params.put("laneType", "ready");
-		params.put("typeId", "1565236907");
+		params.put("typeId", "1553458172");
 		
 		HttpEntity<Map<String, Object>> request = new HttpEntity<>(params, headers);
 

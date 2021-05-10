@@ -77,8 +77,8 @@
 
 						<div class="col-12 col-lg-5 col-xl-4">
 							<!-- Component: Info Persona -->
-							<div class="border b-gray rounded-lg px-3 py-2 mb-2">
-								<a class="mr-2" href="colaboradores.html"><img src="/resources/assets/icons/generales/chev_left.svg"></a>
+							<div class="border b-gray rounded-lg px-3 py-2 mb-2"> 
+								<a class="mr-2" href="../colaborador/colaboradores"><img src="/resources/assets/icons/generales/chev_left.svg"></a>
 								<div class="position-relative d-inline-block w-50px">
 									<img class="w-100 rounded-circle border border-light shadow" src="/resources/assets/img/test/test_team_item_2.png">
 									<span class="pointer-green position-absolute rounded-circle border border-light"></span>
