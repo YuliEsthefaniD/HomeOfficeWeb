@@ -1,7 +1,7 @@
 package com.example.homeOff.commons;
 
 public class ConstantesCommon {
-	public static final String TOKEN = "af8c9591748b5d745f3a39bdd98e4adac98ee01073c0ea1a86bee532bcd5d1c2afd652175689bf31b9de0a89df5224af30c7c536d086f1716a3cf837744dbc2e";
+	public static final String TOKEN = "35742105e9ca865b9fcecd97c009ec5cea3707643ce41d5ce75d94d459b85b914e851635ee5e8d3c9c95fe38f8be967543300941f1a9e8f8be0ccd25a195ce0e";
 	public static final String BASE_PATH ="https://totalplay.leankit.com/io";
 	public static final String BOARD = "/board";
 	public static final String CARD = "/card";

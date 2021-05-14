@@ -22,8 +22,8 @@ import com.example.homeOff.commons.ConstantesCommon;
 @RequestMapping(value = "/cliente/")
 @CrossOrigin("*")
 public class ClienteApi {
-private static final String GETALLPROYECTS="https://totalplay.leankit.com/io/board/";
-private static final String token="af8c9591748b5d745f3a39bdd98e4adac98ee01073c0ea1a86bee532bcd5d1c2afd652175689bf31b9de0a89df5224af30c7c536d086f1716a3cf837744dbc2e";
+private static final String GETALLPROYECTS="https://totalplay.leankit.com/io/board";
+private static final String token="35742105e9ca865b9fcecd97c009ec5cea3707643ce41d5ce75d94d459b85b914e851635ee5e8d3c9c95fe38f8be967543300941f1a9e8f8be0ccd25a195ce0e";
 private static final String GETCARDFORID="https://totalplay.leankit.com/io/card?board=1520404280";
 private static final String GETTASKFORID="https://totalplay.leankit.com/io/card/1529672200/tasks";
 private static final String GETIDBOARD = "https://totalplay.leankit.com/io/board/";

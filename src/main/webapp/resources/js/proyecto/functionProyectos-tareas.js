@@ -22,6 +22,7 @@ var proyecto = new Vue({
 		selecTaskID: "",
 		laneTask:"",
 		lnG: "",
+		newUsers:"",
 	},
 	created() {
     },
@@ -180,9 +181,8 @@ var proyecto = new Vue({
 			}); 
 		},
 		editDetallesTask(){
-		console.log("usuarios antes seleccionados: " + proyecto.selectedUsers.split(",") )
-		console.log("usuarios seleccionados: "
-		+$(".select-usuarios" ).val());
+		console.log("usuarios antes seleccionadosMMM: " + proyecto.selectedUsers.split(",") )
+		console.log("usuarios seleccionados: " +$(".select-usuarios" ).val());
 		var re = /<div>/g;
 		var re2 =/<\/div>/g;	
 		if(proyecto.desTask==null){proyecto.desTask=""};
@@ -226,7 +226,8 @@ var proyecto = new Vue({
 						        }
 		  });
 		  setTimeout(function(){
-				    if($(".select-usuarios" ).val()!=""){
+				    if($(".select-usuarios" ).val().toString()!=""){
+				    console.log("esta entrando aqui");
 				      proyecto.addUsersTask();
 				    }else{
 				      location.reload();
@@ -234,8 +235,11 @@ var proyecto = new Vue({
 		   },3000);
 		},
 		addUsersTask(){
+		  console.log("usuarios seleccionadosYOOO: " +$(".select-usuarios" ).val().toString());
+		  proyecto.newUsers = $(".select-usuarios" ).val().toString();
+		  console.log("newYOOO:+ " + proyecto.newUsers);
 		  var dat = {cardIds: proyecto.selecTaskID,
-					 userIdsToAssign: ($(".select-usuarios" ).val().toString()).substring(0, $(".select-usuarios" ).val().toString() - 1)};
+					 userIdsToAssign: proyecto.newUsers};
 					 
 		  $.ajax({
 						        type: "POST",
@@ -394,7 +398,7 @@ var proyecto = new Vue({
 				 
 		},
 		editTotalUser(){
-		console.log($(".select-usuarios").val()!= proyecto.selectedUsers);
+		console.log($(".select-usuarios").val().toString()!= proyecto.selectedUsers);
 			if($(".select-usuarios").val()!= proyecto.selectedUsers){
 			   if(proyecto.selectedUsers!=""){
 			      proyecto.deleteUsersTask();
